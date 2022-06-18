@@ -8,9 +8,6 @@ export default defineConfig({
   plugins: [
     react(),
     splitVendorChunkPlugin()
-    // chunkSplitPlugin({
-    //   strategy: 'single-vendor'
-    // })
   ],
   build: {
     rollupOptions: {
