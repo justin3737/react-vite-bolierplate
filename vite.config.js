@@ -18,8 +18,17 @@ export default defineConfig({
       },
       output: {
         entryFileNames: `pages/[name]/[name].js`,
-        chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`
+        chunkFileNames: `common/[name].js`,
+        assetFileNames: (assetInfo) => {
+          var info = assetInfo.name.split(".");
+          var extType = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+            extType = "img";
+          } else if (/woff|woff2/.test(extType)) {
+            extType = "css";
+          }
+          return `${extType}/[name].[ext]`;
+        },
       }
     }
   }
