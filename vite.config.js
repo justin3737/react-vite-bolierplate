@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-const { resolve } = require('path');
-import { splitVendorChunkPlugin } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+const { resolve } = require("path");
+import { splitVendorChunkPlugin } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,13 +12,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        counter: resolve(__dirname, 'pages/Counter/index.html'),
-        subpage: resolve(__dirname, 'pages/Subpage/index.html')
+        main: resolve(__dirname, "index.html"),
+        counter: resolve(__dirname, "pages/Counter/index.html"),
+        subpage: resolve(__dirname, "pages/Subpage/index.html")
       },
       output: {
-        entryFileNames: `pages/[name]/[name].js`,
-        chunkFileNames: `common/[name].js`,
+        entryFileNames: "pages/[name]/[name].js",
+        chunkFileNames: "common/[name].js",
         assetFileNames: (assetInfo) => {
           var info = assetInfo.name.split(".");
           var extType = info[info.length - 1];
@@ -32,4 +32,4 @@ export default defineConfig({
       }
     }
   }
-})
+});
