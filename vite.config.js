@@ -1,24 +1,26 @@
 import { defineConfig } from 'vite'
 const { resolve } = require('path');
+import { splitVendorChunkPlugin } from 'vite'
 import react from '@vitejs/plugin-react'
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    chunkSplitPlugin({
-      strategy: 'default'
-    })
+    splitVendorChunkPlugin()
+    // chunkSplitPlugin({
+    //   strategy: 'single-vendor'
+    // })
   ],
   build: {
     rollupOptions: {
       input: {
-        index: resolve(__dirname, 'index.html'),
-        //arcticle: resolve(__dirname, 'arcticle/index.html')
+        main: resolve(__dirname, 'index.html'),
+        counter: resolve(__dirname, 'pages/Counter/index.html'),
+        subpage: resolve(__dirname, 'pages/Subpage/index.html')
       },
       output: {
-        entryFileNames: `assets/[name].js`,
+        entryFileNames: `pages/[name]/[name].js`,
         chunkFileNames: `assets/[name].js`,
         assetFileNames: `assets/[name].[ext]`
       }
