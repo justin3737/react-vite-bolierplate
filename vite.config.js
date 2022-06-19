@@ -13,12 +13,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        counter: resolve(__dirname, "pages/Counter/index.html"),
-        subpage: resolve(__dirname, "pages/Subpage/index.html")
+        counter: resolve(__dirname, "src/pages/Counter/index.html"),
+        subpage: resolve(__dirname, "src/pages/Subpage/index.html")
       },
       output: {
-        entryFileNames: "pages/[name]/[name].js",
-        chunkFileNames: "common/[name].js",
+        entryFileNames: "src/pages/[name]/[name].js",
+        chunkFileNames: "src/common/[name].js",
         assetFileNames: (assetInfo) => {
           var info = assetInfo.name.split(".");
           var extType = info[info.length - 1];
