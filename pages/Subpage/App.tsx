@@ -1,8 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
+import useAxios from '../../utils/useAxios';
+
 
 function App() {
   const [count, setCount] = useState(0)
+  const { isLoading, error, sendRequest: fetchData } = useAxios();
+
+  useEffect(() => {
+    fetchData({ url: "https://jsonplaceholder.typicode.com/posts/1" }, (res) => {
+      console.log(res);
+    });
+  }, []);
 
   return (
     <div className="App">
