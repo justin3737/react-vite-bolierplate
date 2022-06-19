@@ -1,8 +1,6 @@
 import { useState, useCallback } from "react";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
-
 const useAxios = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
